@@ -18,6 +18,8 @@ require("vendor/autoload.php");
 
 // instantiate F3
 $f3 = Base::instance(); // invoke static
+//set the debug level
+$f3->set('DEBUG',3);
 $f3->set('colors',array('pink','green','blue'));
 
 // define a default route
@@ -64,14 +66,14 @@ $f3->route('GET /@item', function($f3, $params) {
 
 // route to our first page of our order form
 // define another route called order that displays a form
-$f3->route('GET /order', function() {
+$f3->route('GET|POST /order', function() {
     $view = new Template();
     echo $view->render('views/form1.html');
 });
 
 // route to our second page of our order form
 // define another route called order that displays a form
-$f3->route('POST /order2', function() {
+$f3->route('GET|POST /order2', function() {
     $_SESSION['animal'] = $_POST['animal'];
     $view = new Template();
     echo $view->render('views/form2.html');
