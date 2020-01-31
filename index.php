@@ -18,6 +18,7 @@ require("vendor/autoload.php");
 
 // instantiate F3
 $f3 = Base::instance(); // invoke static
+$f3->set('colors',array('pink','green','blue'));
 
 // define a default route
 // when the user navigates to the route directory of the project

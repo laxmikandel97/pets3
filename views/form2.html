@@ -11,12 +11,17 @@
     <h1>Pet Order</h1>
     <form method="post" action="results">
         <p>Color</p>
-        <select name="color">
-            <option value="pink">Pink</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
-            <option value="black">Black</option>
-        </select><br><br>
+       <select class="form-control" name="color" id="color">
+           <option>
+               Select a color
+           </option>
+           <repeat group="{{@colors}}" value="{{@colorOption}}">
+               <option>{{@colorOption}}</option>
+           </repeat>
+       </select>
+
+
+
         <input type="submit" value="Next >>">
     </form>
 </body>
