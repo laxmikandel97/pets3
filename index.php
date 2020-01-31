@@ -87,11 +87,10 @@ $f3->route('GET|POST /order', function($f3) {
 // route to our second page of our order form
 // define another route called order that displays a form
 $f3->route('GET|POST /order2', function($f3) {
-    $_SESSION=array();//clear the session
     if(isset($_POST['color']))
     {
         $color = $_POST['color'];
-        if(validAnimal($color))
+        if(validColor($color))
         {
             $_SESSION['color']=$color;
             $f3->reroute('/results');
