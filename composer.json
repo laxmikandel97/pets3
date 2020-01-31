@@ -1,0 +1,16 @@
+{
+  "name": "sjamieson/328/pets3",
+  "authors": [
+    {
+      "name": "Shayna Jamieson",
+      "email": "sjamieson2@mail.greenriver.edu"
+    },
+    {
+      "name": "Laxmi Kandel",
+      "email": "lkandel@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
