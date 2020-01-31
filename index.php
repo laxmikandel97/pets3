@@ -96,7 +96,7 @@ $f3->route('GET|POST /order2', function($f3) {
             $f3->reroute('/results');
         }
         else{
-            $f3->set("errors['color']","Please enter an color.");
+            $f3->set("errors['color']","Please enter an color."); 
         }
     }
 
