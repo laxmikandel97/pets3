@@ -15,7 +15,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require("vendor/autoload.php");
-
+require_once ('model/validations.php');
 // instantiate F3
 $f3 = Base::instance(); // invoke static
 //set the debug level
@@ -66,23 +66,50 @@ $f3->route('GET /@item', function($f3, $params) {
 
 // route to our first page of our order form
 // define another route called order that displays a form
-$f3->route('GET|POST /order', function() {
+$f3->route('GET|POST /order', function($f3) {
+    $_SESSION=array();//clear the session
+    if(isset($_POST['animal']))
+    {
+        $animal = $_POST['animal'];
+        if(validAnimal($animal))
+        {
+            $_SESSION['animal']=$animal;
+            $f3->reroute('/order2');
+        }
+        else{
+            $f3->set("errors['animal']","Please enter an animal.");
+        }
+    }
     $view = new Template();
     echo $view->render('views/form1.html');
 });
 
 // route to our second page of our order form
 // define another route called order that displays a form
-$f3->route('GET|POST /order2', function() {
-    $_SESSION['animal'] = $_POST['animal'];
+$f3->route('GET|POST /order2', function($f3) {
+    $_SESSION=array();//clear the session
+    if(isset($_POST['color']))
+    {
+        $color = $_POST['color'];
+        if(validAnimal($color))
+        {
+            $_SESSION['color']=$color;
+            $f3->reroute('/results');
+        }
+        else{
+            $f3->set("errors['color']","Please enter an color.");
+        }
+    }
+
+//    $_SESSION['animal'] = $_POST['animal'];
     $view = new Template();
     echo $view->render('views/form2.html');
 });
 
 // route to our results page of our order form
 // define another route called order that displays a form
-$f3->route('POST /results', function() {
-    $_SESSION['color'] = $_POST['color'];
+$f3->route('GET|POST /results', function() {
+//    $_SESSION['color'] = $_POST['color'];
     $view = new Template();
     echo $view->render('views/results.html');
 });
